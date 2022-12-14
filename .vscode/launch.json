@@ -10,9 +10,9 @@
             "request": "launch",
             "preLaunchTask": "build",
             // If you have changed target frameworks, make sure to update the program path.
-            "program": "${workspaceFolder}/advent01/bin/Debug/net7.0/advent01.dll",
+            "program": "${workspaceFolder}/advent02/bin/Debug/net7.0/advent02.dll",
             "args": [],
-            "cwd": "${workspaceFolder}/advent01",
+            "cwd": "${workspaceFolder}/advent02",
             // For more information about the 'console' field, see https://aka.ms/VSCode-CS-LaunchJson-Console
             "console": "internalConsole",
             "stopAtEntry": false

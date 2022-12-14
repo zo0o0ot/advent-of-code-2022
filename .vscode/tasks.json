@@ -7,7 +7,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/advent01/advent01.csproj",
+                "${workspaceFolder}/advent02/advent02.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -19,7 +19,7 @@
             "type": "process",
             "args": [
                 "publish",
-                "${workspaceFolder}/advent01/advent01.csproj",
+                "${workspaceFolder}/advent02/advent02.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -33,7 +33,7 @@
                 "watch",
                 "run",
                 "--project",
-                "${workspaceFolder}/advent01/advent01.csproj"
+                "${workspaceFolder}/advent02/advent02.csproj"
             ],
             "problemMatcher": "$msCompile"
         }
