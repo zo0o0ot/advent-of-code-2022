@@ -10,45 +10,79 @@ foreach (string line in lines)
 {
     string[] rps = line.Split(' ');
     string player1 = rps[0];
-    string player2 = rps[1];
+    string desiredOutcome = rps[1];
     int outcome = 0;
+    string player2 = "Rock";
 
-    int choice = player2 switch 
-    {
-        "X" => 1, // Rock
-        "Y" => 2, // Paper
-        "Z" => 3, // Scissors
-    };
-    score += choice;
+    
 
+    // Hacky StackOverflow answer: https://stackoverflow.com/a/59890465
     if (player1 == "A") // Rock
     {
-        outcome = player2 switch 
+        outcome = desiredOutcome switch 
         {
-            "X" => 3, // Rock - DRAW
-            "Y" => 6, // Paper - WIN
-            "Z" => 0, // Scissors - LOSE
+            "X" => ((Func<int>)(() => { //LOSE
+                        AnsiConsole.MarkupLine(":elf: Need to LOSE vs ROCK :rock: - Pick Scissors :scissors:");
+                        player2 = "Scissors";
+                        return 0;
+                    }))(), 
+            "Y" => ((Func<int>)(() => { //DRAW
+                        AnsiConsole.MarkupLine(":elf: Need to DRAW vs ROCK :rock: - Pick Rock :rock:");
+                        player2 = "Rock";
+                        return 3;
+                    }))(), 
+            "Z" => ((Func<int>)(() => { //WIN
+                        AnsiConsole.MarkupLine(":elf: Need to WIN vs ROCK :rock: - Pick paper :newspaper:");
+                        player2 = "Paper";
+                        return 6;
+                    }))(),
         }; 
     } 
     else if (player1 == "B") // Paper
     {
-        outcome = player2 switch 
+        outcome = desiredOutcome switch 
         {
-            "X" => 0, // Rock - LOSE
-            "Y" => 3, // Paper - DRAW
-            "Z" => 6, // Scissors - WIN
+            "X" => ((Func<int>)(() => { //LOSE
+                        player2 = "Rock";
+                        return 0;
+                    }))(), 
+            "Y" => ((Func<int>)(() => { //DRAW
+                        player2 = "Paper";
+                        return 3;
+                    }))(), 
+            "Z" => ((Func<int>)(() => { //WIN
+                        player2 = "Scissors";
+                        return 6;
+                    }))(),
         };
     } 
     else if (player1 == "C") //Scissors
     {
-        outcome = player2 switch 
+        outcome = desiredOutcome switch 
         {
-            "X" => 6, // Rock - WIN
-            "Y" => 0, // Paper - LOSE
-            "Z" => 3, // Scissors - DRAW
+            "X" => ((Func<int>)(() => { //LOSE
+                        player2 = "Paper";
+                        return 0;
+                    }))(), 
+            "Y" => ((Func<int>)(() => { //DRAW
+                        player2 = "Scissors";
+                        return 3;
+                    }))(), 
+            "Z" => ((Func<int>)(() => { //WIN
+                        player2 = "Rock";
+                        return 6;
+                    }))(),
         };
     }
     score += outcome;
+
+    int choice = player2 switch 
+    {
+        "Rock" => 1, // Rock
+        "Paper" => 2, // Paper
+        "Scissors" => 3, // Scissors
+    };
+    score += choice;
 }
 
 AnsiConsole.MarkupLine(":elf:Score = " + score +":elf:");
