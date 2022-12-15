@@ -5,33 +5,44 @@ using System.Collections.Generic;
 // See https://aka.ms/new-console-template for more information
 
 string[] lines = System.IO.File.ReadAllLines("input/input.txt");
-
+  
 int itemSum = 0;
 int lineNumber = 1;
 // Display the file contents by using a foreach loop.
+List<string> group = new List<string>();
 foreach (string line in lines)
 {
-
-    int strlen = line.Length;
-    int half = strlen/2;
-
-    string firstCompartment = line.Substring(0,half);
-    string secondCompartment = line.Substring(half);
-
-    var common = firstCompartment.Intersect(secondCompartment);
-
-
-    AnsiConsole.MarkupLine("First half: " + line.Substring(0,half));
-    AnsiConsole.MarkupLine("Second half: " + line.Substring(half));
-
-    foreach (var c in common)
+    int groupSize = group.Length;
+    if (groupSize < 3 )
     {
+        group.Add(line);
+    }
+
+    if (group.Length == 3)
+    {
+        
+    }
+
+    //int strlen = line.Length;
+    //int half = strlen/2;
+
+    //string firstCompartment = line.Substring(0,half);
+    //string secondCompartment = line.Substring(half);
+
+    //var common = firstCompartment.Intersect(secondCompartment);
+
+
+    //AnsiConsole.MarkupLine("First half: " + line.Substring(0,half));
+    //AnsiConsole.MarkupLine("Second half: " + line.Substring(half));
+
+    //foreach (var c in common)
+    //{
         AnsiConsole.MarkupLine(":check_mark_button: Line " + lineNumber + " Common character: " + c);
         int charVal = 0;
         charVal = getPoints(c.ToString());
         AnsiConsole.MarkupLine(":chart_increasing: Character value: " + charVal );
         itemSum += (charVal);
-    }
+    //}
 
 
     
