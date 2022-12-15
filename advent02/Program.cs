@@ -36,6 +36,7 @@ foreach (string line in lines)
                         player2 = "Paper";
                         return 6;
                     }))(),
+            _ => 0,
         }; 
     } 
     else if (player1 == "B") // Paper
@@ -54,6 +55,7 @@ foreach (string line in lines)
                         player2 = "Scissors";
                         return 6;
                     }))(),
+            _ => 0,
         };
     } 
     else if (player1 == "C") //Scissors
@@ -72,6 +74,7 @@ foreach (string line in lines)
                         player2 = "Rock";
                         return 6;
                     }))(),
+            _ => 0,
         };
     }
     score += outcome;
@@ -81,6 +84,7 @@ foreach (string line in lines)
         "Rock" => 1, // Rock
         "Paper" => 2, // Paper
         "Scissors" => 3, // Scissors
+        _ => 0,
     };
     score += choice;
 }
